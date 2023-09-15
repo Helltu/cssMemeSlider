@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+body {
+    background-color: #3A506B;
+}
+
+* {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slider {
+    position: relative;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C2541;
+    border: solid #0B132B 2px;
+    border-radius: 20px;
+    margin: 50px auto;
+    width: 80%;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-content {
+    width: 30vw;
+    overflow-x: hidden;
+    overflow-y: visible;
+    align-items: center;
+}
+
+.content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;    
+    right: 0ch;
+}
+
+.content-wrapper.pos-one{
+
+}
+
+.slider-pagination {
+    margin-top: -33px;
+    align-items: center;
+    justify-content: end;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    width: 30vw;
+    height: 33px;
+}
+
+.slider-image {
+    width: 30vw;
+    border-radius: 30px;
+}
+
+.slider-text {
+    display: flex;
+    align-items: center;
+    color: #F7F0F0;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: left;
+    height: 33px;
+    font-size: 16px;
+}
+
+.pagination-button {
+    position: relative;
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-image: url("./assets/pagionation.svg");
+    cursor: pointer;
+}
+
+.pagination-button::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+}
+
+.pagination-button.checked {
+    background-image: url("./assets/pagination_checked.svg");
+    pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .slider-content {
+        width: 50vw;
+    }
+
+    .slider-image {
+        width: 50vw;
+    }
+    .slider-pagination {
+        width: 50vw;
+        justify-content: center;
+    }
+    .slider-text {
+        position: relative;
+        top: 33px;
+        font-size: 24px;
+    }
+}
