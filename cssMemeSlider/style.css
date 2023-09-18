@@ -24,19 +24,32 @@ body {
     width: 80%;
 }
 
+.slider-wrapper{
+    width: 30vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content{
+    overflow: hidden;
+}
+
 .slide {
     display: flex;
     flex-direction: column;
 }
 
-.slider-content {
+.content-wrapper {
     width: 30vw;
-    overflow-x: hidden;
-    overflow-y: visible;
     align-items: center;
 }
 
 .content-wrapper {
+    order: 1;
     display: flex;
     flex-direction: row;
     right: 0ch;
@@ -78,6 +91,7 @@ body {
 }
 
 .slider-pagination {
+    order: 3;
     align-items: center;
     justify-content: end;
     display: flex;
@@ -94,6 +108,7 @@ body {
 
 .text {
     overflow: hidden;
+    order: 2;
 }
 
 .text-wrapper {
@@ -114,14 +129,21 @@ body {
 }
 
 .pagination-button {
+    appearance: none;
     position: relative;
     transition: 0.1s;
     display: block;
     height: 1.2vw;
     width: 1.2vw;
-    background-image: url("./assets/pagionation.svg");
     background-size: cover;
     cursor: pointer;
+    background-image: url("./assets/pagionation.svg");
+}
+
+.pagination-button:checked {
+    pointer-events: none;
+    appearance: none;
+    background-image: url("./assets/pagination_checked.svg");
 }
 
 .pagination-button:hover {
@@ -139,24 +161,51 @@ body {
     right: -5px;
 }
 
-.pagination-button.checked {
-    background-image: url("./assets/pagination_checked.svg");
+.slider-pagination:has(#button-1:checked) +.text +.content .content-wrapper{
+    transform: translateX(0%);
+    transition: 0.1s;
 }
 
-.wrapper {
-    margin-top: 10px;
-    width: 30vw;
-    display: flex;
-    flex-direction: row;
+.slider-pagination:has(#button-2:checked) +.text +.content .content-wrapper{
+    transform: translateX(-100%);
+    transition: 0.1s;
 }
 
+.slider-pagination:has(#button-3:checked) +.text +.content .content-wrapper{
+    transform: translateX(-200%);
+    transition: 0.1s;
+}
+
+.slider-pagination:has(#button-4:checked) +.text +.content .content-wrapper{
+    transform: translateX(-300%);
+    transition: 0.1s;
+}
+.slider-pagination:has(#button-1:checked) +.text .text-wrapper{
+    transform: translateX(0%);
+    transition: 0.1s;
+}
+
+.slider-pagination:has(#button-2:checked) +.text .text-wrapper{
+    transform: translateX(-150%);
+    transition: 0.1s;
+}
+
+.slider-pagination:has(#button-3:checked) +.text .text-wrapper{
+    transform: translateX(-300%);
+    transition: 0.1s;
+}
+
+.slider-pagination:has(#button-4:checked) +.text .text-wrapper{
+    transform: translateX(-450%);
+    transition: 0.1s;
+}
 @media screen and (max-width: 1024px) {
-    .wrapper {
+    .slider-wrapper{
         width: 50vw;
-        flex-direction: column-reverse !important;
+        flex-direction: column;
+        justify-content: space-between;
     }
-
-    .slider-content {
+    .content-wrapper {
         width: 50vw;
     }
 
@@ -165,6 +214,7 @@ body {
     }
 
     .text {
+        order: 3;
         top: 33px;
         width: 50vw;
     }
@@ -175,6 +225,7 @@ body {
     }
 
     .slider-pagination {
+        order: 2;
         width: 50vw;
         justify-content: center;
     }
@@ -184,37 +235,22 @@ body {
         width: 2vw;
     }
 
-    .slider.pos-1 .content-wrapper,
-    .slider.pos-1 .text-wrapper {
+    .slider-pagination:has(#button-1:checked) +.text .text-wrapper{
+        transform: translateX(0%);
         transition: 0.1s;
     }
 
-    .slider.pos-2 .content-wrapper {
-        transform: translateX(-100%);
-        transition: 0.1s;
-    }
-
-    .slider.pos-2 .text-wrapper {
+    .slider-pagination:has(#button-2:checked) +.text .text-wrapper{
         transform: translateX(-250%);
         transition: 0.1s;
     }
 
-    .slider.pos-3 .content-wrapper {
-        transform: translateX(-200%);
-        transition: 0.1s;
-    }
-
-    .slider.pos-3 .text-wrapper {
+    .slider-pagination:has(#button-3:checked) +.text .text-wrapper{
         transform: translateX(-500%);
         transition: 0.1s;
     }
 
-    .slider.pos-4 .content-wrapper {
-        transform: translateX(-300%);
-        transition: 0.1s;
-    }
-
-    .slider.pos-4 .text-wrapper {
+    .slider-pagination:has(#button-4:checked) +.text .text-wrapper{
         transform: translateX(-750%);
         transition: 0.1s;
     }
